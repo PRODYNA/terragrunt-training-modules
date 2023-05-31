@@ -36,9 +36,9 @@ resource "azurerm_subnet" "db" {
   }
 }
 
-#########
-## ASG ##
-#########
+################################
+## APPLICATION SECURITY GROUP ##
+################################
 
 resource "azurerm_application_security_group" "web" {
   name                = "asg-web"
@@ -46,9 +46,9 @@ resource "azurerm_application_security_group" "web" {
   resource_group_name = data.azurerm_resource_group.main.name
 }
 
-#########
-## NSG ##
-#########
+############################
+## NETWORK SECURITY GROUP ##
+############################
 
 resource "azurerm_network_security_group" "web" {
   name                = "nsg-web"
@@ -95,9 +95,9 @@ resource "azurerm_subnet_network_security_group_association" "default" {
   network_security_group_id = azurerm_network_security_group.web.id
 }
 
-##############
-## PUBLIC IP #
-##############
+###############
+## PUBLIC IP ##
+###############
 
 resource "azurerm_public_ip" "vm" {
   for_each = toset(local.instances)

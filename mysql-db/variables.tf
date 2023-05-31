@@ -21,6 +21,7 @@ variable "private_dns_zone_id" {
 variable "backup_retention_days" {
   type = number
   description = "How long to keep backups in days"
+  default = 7
 }
 
 variable "db_sku_name" {
