@@ -102,7 +102,7 @@ resource "azurerm_subnet_network_security_group_association" "default" {
 resource "azurerm_public_ip" "vm" {
   for_each = toset(var.wordpress_instances)
 
-  name                = "pip-traininig-1-${each.key}"
+  name                = "pip-traininig-${each.key}"
   location            = data.azurerm_resource_group.main.location
   resource_group_name = data.azurerm_resource_group.main.name
   sku               = "Basic"
