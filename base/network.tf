@@ -2,9 +2,9 @@
 # Ressource Group #
 ###################
 
-
-
-
+data "azurerm_resource_group" "main" {
+  name = var.resource_group_name
+}
 
 ###################
 # Virtual Network #
@@ -108,7 +108,6 @@ resource "azurerm_public_ip" "vm" {
   name                = "pip-traininig-1-${each.key}"
   location            = data.azurerm_resource_group.main.location
   resource_group_name = data.azurerm_resource_group.main.name
-
   sku               = "Basic"
   allocation_method = "Static"
 }

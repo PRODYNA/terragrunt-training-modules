@@ -2,9 +2,9 @@
 # Virtual machine #
 ###################
 resource "azurerm_network_interface" "vm" {
-  for_each = toset(local.instances) ##
+  for_each = toset(var.instances) ##
 
-  name                = "nic-wordpress-1-${each.key}" ## now we need to use the key
+  name                = "nic-wordpress-${each.key}" ## now we need to use the key
   location            = var.location ##
   resource_group_name = var.resource_group_name ##
 
@@ -26,12 +26,12 @@ resource "azurerm_network_interface_application_security_group_association" "vm"
 resource "azurerm_linux_virtual_machine" "vm" {
   for_each = azurerm_network_interface.vm ## 
 
-  name                            = "vm-wordpress-1-${var.instance_id}"
+  name                            = "vm-wordpress-${each.key}" ##
   location                        = each.value.location ## 
   resource_group_name             = each.value.resource_group_name ##
   size                            = "Standard_B2s"
-  admin_username                  = "trainingadmin"
-  admin_password                  = "mysecret123!"
+  admin_username                  = var.db_user
+  admin_password                  = var.db_pw
   disable_password_authentication = false
   network_interface_ids = [
     each.value.id, 
@@ -52,8 +52,8 @@ resource "azurerm_linux_virtual_machine" "vm" {
   provisioner "file" {
     content = templatefile("start-wordpress.tpl", {
       db_user = var.db_user
-      db_pass = var.db_password
-      db_url  = var.mysql_url
+      db_pass = var.db_pw
+      db_url  = var.db_url
     })
     destination = "/tmp/setup.sh"
 

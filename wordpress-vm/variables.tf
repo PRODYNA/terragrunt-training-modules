@@ -1,11 +1,11 @@
+variable "subscription_id" {
+  type = string
+  description = "ID of subscription to deploy to"
+}
+
 variable "resource_group_name" {
   type        = string
   description = "Name of the resource group to use"
-}
-
-variable "instance_id" {
-  type        = string
-  description = "ID of instance"
 }
 
 variable "subnet_id" {
@@ -13,9 +13,9 @@ variable "subnet_id" {
   description = "ID of subnet"
 }
 
-variable "pip_id" {
+variable "pip_ids" {
   type        = string
-  description = "ID of public IP"
+  description = "IDs of public IPs"
 }
 
 variable "asg_id" {
@@ -24,13 +24,13 @@ variable "asg_id" {
 }
 
 variable "db_user" {
-  type        = string
-  description = "Username for the mysql database"
+  type = string
+  description = "Password for the DB"
 }
 
-variable "db_pass" {
-  type        = string
-  description = "Password for the mysql database"
+variable "db_pw" {
+  type = string
+  description = "Username for the DB"
 }
 
 variable "db_url" {

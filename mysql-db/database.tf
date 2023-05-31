@@ -1,3 +1,11 @@
+###################
+# Ressource Group #
+###################
+
+data "azurerm_resource_group" "main" {
+  name = var.resource_group_name
+}
+
 #########
 # MySQL #
 #########
@@ -5,15 +13,13 @@ resource "azurerm_mysql_flexible_server" "mysql" {
   name                   = "mysql-training-1"
   resource_group_name    = data.azurerm_resource_group.main.name
   location               = data.azurerm_resource_group.main.location
-  administrator_login    = "trainingadmin"
-  administrator_password = "mysecret123!"
-  backup_retention_days  = 7
-  delegated_subnet_id    = azurerm_subnet.db.id
-  private_dns_zone_id    = azurerm_private_dns_zone.mysql.id
-  sku_name               = "B_Standard_B1ms"
+  administrator_login    = var.db_user
+  administrator_password = var.db_pw
+  backup_retention_days  = var.backup_retention_days
+  delegated_subnet_id    = var.db_subnet_id
+  private_dns_zone_id    = var.backup_retention_days
+  sku_name               = var.sku_name
   zone                   = 1
-
-  depends_on = [azurerm_private_dns_zone_virtual_network_link.mysql]
 }
 
 resource "azurerm_mysql_flexible_server_configuration" "require_secure_transport" {
