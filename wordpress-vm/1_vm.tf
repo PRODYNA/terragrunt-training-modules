@@ -56,9 +56,10 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
   provisioner "file" {
     content = templatefile("start-wordpress.tpl", {
-      db_user = var.db_user
-      db_pass = var.db_pw
-      db_url  = var.db_url
+      db_user     = var.db_user
+      db_pass     = var.db_pw
+      db_url      = var.db_url
+      db_name_key = each.key
     })
     destination = "/tmp/setup.sh"
 
