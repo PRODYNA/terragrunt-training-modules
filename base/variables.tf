@@ -22,3 +22,8 @@ variable "db_subnet_cidr" {
   type = string
   description = "CIDR of db subnet"
 }
+
+variable "wordpress_instances" {
+  type        = list
+  description = "List of Wordpress Instances"
+}

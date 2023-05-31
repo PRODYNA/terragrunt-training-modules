@@ -37,3 +37,8 @@ variable "db_url" {
   type        = string
   description = "Url to the mysql database"
 }
+
+variable "instances" {
+  type        = list
+  description = "List of Wordpress Instances"
+}
