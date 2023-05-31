@@ -100,7 +100,7 @@ resource "azurerm_subnet_network_security_group_association" "default" {
 ###############
 
 resource "azurerm_public_ip" "vm" {
-  for_each = toset(local.instances)
+  for_each = toset(var.instances)
 
   name                = "pip-traininig-1-${each.key}"
   location            = data.azurerm_resource_group.main.location
