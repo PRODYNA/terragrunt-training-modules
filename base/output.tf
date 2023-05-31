@@ -11,7 +11,7 @@ output "private_dns_zone_id" {
 }
 
 output "pip_ids" {
-  value = { for x in azurerm_public_ip.vm : x => x.id }
+  value = { for x in azurerm_public_ip.vm : x.id => x.id }
 }
 
 output "asg_id" {
