@@ -6,8 +6,12 @@ output "db_subnet_id" {
   value = azurerm_subnet.db.id
 }
 
+output "private_dns_zone_id" {
+  value = azurerm_private_dns_zone.mysql.id
+}
+
 output "pip_ids" {
-  value = azurerm_public_ip.vm.id
+  value = { for x in azurerm_public_ip.vm : x.id => x.pip_ids }
 }
 
 output "asg_id" {

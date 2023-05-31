@@ -1,14 +1,7 @@
-###################
-# Ressource Group #
-###################
+#####################
+## VIRTUAL NETWORK ##
+#####################
 
-data "azurerm_resource_group" "main" {
-  name = var.resource_group_name
-}
-
-###################
-# Virtual Network #
-###################
 resource "azurerm_virtual_network" "main" {
   name                = "vnet-training-1"
   resource_group_name = data.azurerm_resource_group.main.name
@@ -16,9 +9,10 @@ resource "azurerm_virtual_network" "main" {
   location            = data.azurerm_resource_group.main.location
 }
 
-##########
-# Subnet #
-##########
+############
+## SUBNET ##
+############
+
 resource "azurerm_subnet" "default" {
   name                 = "default"
   resource_group_name  = data.azurerm_resource_group.main.name
@@ -42,18 +36,20 @@ resource "azurerm_subnet" "db" {
   }
 }
 
-#######
-# ASG #
-#######
+#########
+## ASG ##
+#########
+
 resource "azurerm_application_security_group" "web" {
   name                = "asg-web"
   location            = data.azurerm_resource_group.main.location
   resource_group_name = data.azurerm_resource_group.main.name
 }
 
-#######
-# NSG #
-#######
+#########
+## NSG ##
+#########
+
 resource "azurerm_network_security_group" "web" {
   name                = "nsg-web"
   location            = data.azurerm_resource_group.main.location
@@ -99,9 +95,10 @@ resource "azurerm_subnet_network_security_group_association" "default" {
   network_security_group_id = azurerm_network_security_group.web.id
 }
 
-#############
-# Public IP #
-#############
+##############
+## PUBLIC IP #
+##############
+
 resource "azurerm_public_ip" "vm" {
   for_each = toset(local.instances)
 
@@ -112,9 +109,10 @@ resource "azurerm_public_ip" "vm" {
   allocation_method = "Static"
 }
 
-####################
-# Private DNS Zone #
-####################
+######################
+## PRIVATE DNS ZONE ##
+######################
+
 resource "azurerm_private_dns_zone" "mysql" {
   name                = "private.mysql.database.azure.com"
   resource_group_name = data.azurerm_resource_group.main.name

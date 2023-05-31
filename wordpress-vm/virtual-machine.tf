@@ -1,18 +1,19 @@
-###################
-# Virtual machine #
-###################
+#######################
+## NETWORK INTERFACE ##
+#######################
+
 resource "azurerm_network_interface" "vm" {
   for_each = toset(var.instances) ##
 
   name                = "nic-wordpress-${each.key}" ## now we need to use the key
-  location            = var.location ##
-  resource_group_name = var.resource_group_name ##
+  location            = data.azurerm_resource_group.main.location ##
+  resource_group_name = data.azurerm_resource_group.main.name ##
 
   ip_configuration {
     name                          = "internal"
     subnet_id                     = var.subnet_id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = var.pip_id
+    public_ip_address_id          = var.pip_ids[each.key]
   }
 }
 
@@ -22,6 +23,10 @@ resource "azurerm_network_interface_application_security_group_association" "vm"
   network_interface_id          = each.value.id ##
   application_security_group_id = var.asg_id
 }
+
+#####################
+## VIRTUAL MACHINE ##
+#####################
 
 resource "azurerm_linux_virtual_machine" "vm" {
   for_each = azurerm_network_interface.vm ## 

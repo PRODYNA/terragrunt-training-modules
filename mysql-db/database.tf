@@ -1,14 +1,7 @@
-###################
-# Ressource Group #
-###################
+###########
+## MySQL ##
+###########
 
-data "azurerm_resource_group" "main" {
-  name = var.resource_group_name
-}
-
-#########
-# MySQL #
-#########
 resource "azurerm_mysql_flexible_server" "mysql" {
   name                   = "mysql-training-1"
   resource_group_name    = data.azurerm_resource_group.main.name
