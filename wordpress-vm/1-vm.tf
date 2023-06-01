@@ -13,7 +13,7 @@ resource "azurerm_network_interface" "vm" {
     name                          = "internal"
     subnet_id                     = var.subnet_id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = element(var.pip_ids, count.index -1) # retrieves a single element from a list: element(list, index)
+    public_ip_address_id          = element(var.pip_ids, count.index) # retrieves a single element from a list: element(list, index)
   }
 }
 
