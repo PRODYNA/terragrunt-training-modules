@@ -8,6 +8,11 @@ variable "resource_group_name" {
   description = "Name of the resource group to use"
 }
 
+variable "instances" {
+  type        = list
+  description = "List of Wordpress Instances"
+}
+
 variable "subnet_id" {
   type        = string
   description = "ID of subnet"
@@ -36,9 +41,4 @@ variable "db_pw" {
 variable "db_url" {
   type        = string
   description = "Url to the mysql database"
-}
-
-variable "instances" {
-  type        = list
-  description = "List of Wordpress Instances"
 }
