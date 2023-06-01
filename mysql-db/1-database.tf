@@ -10,7 +10,7 @@ resource "azurerm_mysql_flexible_server" "mysql" {
   administrator_password = var.db_pw
   backup_retention_days  = var.backup_retention_days
   delegated_subnet_id    = var.db_subnet_id
-  private_dns_zone_id    = var.backup_retention_days
+  private_dns_zone_id    = var.private_dns_zone_id
   sku_name               = var.db_sku_name
   zone                   = 1
 }
