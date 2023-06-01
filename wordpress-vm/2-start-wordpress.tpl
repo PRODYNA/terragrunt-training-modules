@@ -20,5 +20,5 @@ echo "create database wordpress" | mysql --host=$db_url --user=$db_user --passwo
 echo "Starting Wordpress server.."
 sudo docker stop wordpress &>/dev/null | true
 sudo docker rm wordpress &>/dev/null | true
-sudo docker run -d --name wordpress-$db_name_key -e WORDPRESS_DB_HOST=$db_url -e WORDPRESS_DB_USER=$db_user -e WORDPRESS_DB_PASSWORD=$db_pass -e WORDPRESS_DB_NAME=wordpress -e WORDPRESS_TABLE_PREFIX=wp_ --network host wordpress && \
+sudo docker run -d --name $db_name -e WORDPRESS_DB_HOST=$db_url -e WORDPRESS_DB_USER=$db_user -e WORDPRESS_DB_PASSWORD=$db_pass -e WORDPRESS_DB_NAME=wordpress -e WORDPRESS_TABLE_PREFIX=wp_ --network host wordpress && \
 echo "Access Wordpress via http://$PUB_IP"
