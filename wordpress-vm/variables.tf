@@ -19,6 +19,7 @@ variable "subnet_id" {
 }
 
 variable "pip_ids" {
+  type = list(string)
   description = "IDs of public IPs"
 }
 
