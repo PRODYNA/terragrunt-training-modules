@@ -18,9 +18,9 @@ resource "azurerm_network_interface" "vm" {
 }
 
 resource "azurerm_network_interface_application_security_group_association" "vm" {
-  for_each = toset(azurerm_network_interface.vm)
+  count = length(var.pip_ids) 
 
-  network_interface_id          = each.value.id
+  network_interface_id          = azurerm_network_interface.vm[count.index].id
   application_security_group_id = var.asg_id
 }
 
@@ -29,17 +29,17 @@ resource "azurerm_network_interface_application_security_group_association" "vm"
 #####################
 
 resource "azurerm_linux_virtual_machine" "vm" {
-  for_each = toset(azurerm_network_interface.vm)
+  count = length(var.pip_ids) 
 
-  name                            = "vm-wordpress-${each.key}"
-  location                        = each.value.location
-  resource_group_name             = each.value.resource_group_name
+  name                            = "vm-wordpress-${count.index}"
+  location                        = data.azurerm_resource_group.main.location
+  resource_group_name             = data.azurerm_resource_group.main.name
   size                            = "Standard_B2s"
   admin_username                  = var.db_user
   admin_password                  = var.db_pw
   disable_password_authentication = false
   network_interface_ids = [
-    each.value.id, 
+    azurerm_network_interface.vm[count.index].id, 
   ] ##
 
   source_image_reference {
