@@ -3,24 +3,24 @@
 #######################
 
 resource "azurerm_network_interface" "vm" {
-  for_each = toset(var.instances) ##
+  count = length(var.instances)
 
-  name                = "nic-wordpress-${each.key}" ## now we need to use the key
-  location            = data.azurerm_resource_group.main.location ##
-  resource_group_name = data.azurerm_resource_group.main.name ##
+  name                = "nic-wordpress-${var.instances[count.index]}"
+  location            = data.azurerm_resource_group.main.location
+  resource_group_name = data.azurerm_resource_group.main.name
 
   ip_configuration {
     name                          = "internal"
     subnet_id                     = var.subnet_id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = var.pip_ids[each.key]
+    public_ip_address_id          = var.pip_ids[count.index]
   }
 }
 
 resource "azurerm_network_interface_application_security_group_association" "vm" {
-  for_each = azurerm_network_interface.vm ## 
+  for_each = azurerm_network_interface.vm
 
-  network_interface_id          = each.value.id ##
+  network_interface_id          = each.value.id
   application_security_group_id = var.asg_id
 }
 
@@ -29,11 +29,11 @@ resource "azurerm_network_interface_application_security_group_association" "vm"
 #####################
 
 resource "azurerm_linux_virtual_machine" "vm" {
-  for_each = azurerm_network_interface.vm ## 
+  for_each = azurerm_network_interface.vm
 
-  name                            = "vm-wordpress-${each.key}" ##
-  location                        = each.value.location ## 
-  resource_group_name             = each.value.resource_group_name ##
+  name                            = "vm-wordpress-${each.key}"
+  location                        = each.value.location
+  resource_group_name             = each.value.resource_group_name
   size                            = "Standard_B2s"
   admin_username                  = var.db_user
   admin_password                  = var.db_pw
