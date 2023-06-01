@@ -3,9 +3,9 @@
 #######################
 
 resource "azurerm_network_interface" "vm" {
-  count = length(var.instances)
+  for_each = { for idx, instance in var.instances: idx => instance }
 
-  name                = "nic-wordpress-${var.instances[count.index]}"
+  name                = "nic-wordpress-${each.value}"
   location            = data.azurerm_resource_group.main.location
   resource_group_name = data.azurerm_resource_group.main.name
 
@@ -13,7 +13,7 @@ resource "azurerm_network_interface" "vm" {
     name                          = "internal"
     subnet_id                     = var.subnet_id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = var.pip_ids[count.index]
+    public_ip_address_id          = var.pip_ids[each.key]
   }
 }
 
