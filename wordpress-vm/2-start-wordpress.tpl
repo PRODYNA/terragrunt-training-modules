@@ -15,7 +15,7 @@ sudo add-apt-repository --yes \
 sudo apt-get -y install docker-ce mariadb-client-core-10.6
 
 echo -e "\n\nCreating database 'wordpress' on MySQL server..."
-echo "create database wordpress" | mysql --host=$db_url --user=$db_user --password=$db_pass && echo "Database created!"
+echo "create database $db_name" | mysql --host=$db_url --user=$db_user --password=$db_pass && echo "Database created!"
 
 echo "Starting Wordpress server.."
 sudo docker stop wordpress &>/dev/null | true
