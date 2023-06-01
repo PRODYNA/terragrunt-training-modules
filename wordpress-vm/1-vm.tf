@@ -18,7 +18,7 @@ resource "azurerm_network_interface" "vm" {
 }
 
 resource "azurerm_network_interface_application_security_group_association" "vm" {
-  for_each = azurerm_network_interface.vm
+  for_each = toset(azurerm_network_interface.vm)
 
   network_interface_id          = each.value.id
   application_security_group_id = var.asg_id
@@ -29,7 +29,7 @@ resource "azurerm_network_interface_application_security_group_association" "vm"
 #####################
 
 resource "azurerm_linux_virtual_machine" "vm" {
-  for_each = azurerm_network_interface.vm
+  for_each = toset(azurerm_network_interface.vm)
 
   name                            = "vm-wordpress-${each.key}"
   location                        = each.value.location
