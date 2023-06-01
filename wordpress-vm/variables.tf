@@ -19,7 +19,6 @@ variable "subnet_id" {
 }
 
 variable "pip_ids" {
-  type        = string
   description = "IDs of public IPs"
 }
 
