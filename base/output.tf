@@ -11,7 +11,7 @@ output "private_dns_zone_id" {
 }
 
 output "pip_ids" {
-  value = azurerm_public_ip.vm[*].id # this prints out a list ["",""] with ids
+  value = values(azurerm_public_ip.vm)[*].id # this prints out a list ["",""] with ids
 }
 
 output "asg_id" {
