@@ -5,7 +5,7 @@
 resource "azurerm_network_interface" "vm" {
   count = length(var.pip_ids)
 
-  name                = "nic-wordpress-${count.index}"
+  name                = "${var.resource_prefix}-nic-wordpress-${count.index}"
   location            = data.azurerm_resource_group.main.location
   resource_group_name = data.azurerm_resource_group.main.name
 
