@@ -18,6 +18,11 @@ variable "private_dns_zone_id" {
   description = "Id of the private dns zone to use for the DB"
 }
 
+variable "mysql_name" {
+  type = string
+  description = "Name of the MySQL"
+}
+
 variable "backup_retention_days" {
   type = number
   description = "How long to keep backups in days"
