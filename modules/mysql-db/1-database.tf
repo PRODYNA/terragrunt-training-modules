@@ -16,7 +16,7 @@ resource "azurerm_mysql_flexible_server" "mysql" {
 }
 
 resource "azurerm_mysql_flexible_server_configuration" "require_secure_transport" {
-  name                = "${var.resource_prefix}-require_secure_transport"
+  name                = "require_secure_transport"
   resource_group_name = data.azurerm_resource_group.main.name
   server_name         = azurerm_mysql_flexible_server.mysql.name
   value               = "OFF"
