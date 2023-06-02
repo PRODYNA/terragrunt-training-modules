@@ -31,7 +31,7 @@ resource "azurerm_network_interface_application_security_group_association" "vm"
 resource "azurerm_linux_virtual_machine" "vm" {
   count = length(var.pip_ids) 
 
-  name                            = "vm-wordpress-${count.index}"
+  name                            = "${resource_prefix}-vm-wordpress-${count.index}"
   location                        = data.azurerm_resource_group.main.location
   resource_group_name             = data.azurerm_resource_group.main.name
   size                            = "Standard_B2s"

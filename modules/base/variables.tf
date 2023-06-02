@@ -1,3 +1,8 @@
+variable "resource_prefix" {
+  type = string
+  description = "Prefix for the azure resources"
+}
+
 variable "subscription_id" {
   type = string
   description = "ID of subscription to deploy to"
