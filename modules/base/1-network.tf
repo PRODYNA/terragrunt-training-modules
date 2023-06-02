@@ -3,7 +3,7 @@
 #####################
 
 resource "azurerm_virtual_network" "main" {
-  name                = "${resource_prefix}-vnet-training-1"
+  name                = "${var.resource_prefix}-vnet-training-1"
   resource_group_name = data.azurerm_resource_group.main.name
   address_space       = [var.vnet_cidr]
   location            = data.azurerm_resource_group.main.location
@@ -41,7 +41,7 @@ resource "azurerm_subnet" "db" {
 ################################
 
 resource "azurerm_application_security_group" "web" {
-  name                = "${resource_prefix}-asg-web"
+  name                = "${var.resource_prefix}-asg-web"
   location            = data.azurerm_resource_group.main.location
   resource_group_name = data.azurerm_resource_group.main.name
 }
@@ -51,13 +51,13 @@ resource "azurerm_application_security_group" "web" {
 ############################
 
 resource "azurerm_network_security_group" "web" {
-  name                = "${resource_prefix}-nsg-web"
+  name                = "${var.resource_prefix}-nsg-web"
   location            = data.azurerm_resource_group.main.location
   resource_group_name = data.azurerm_resource_group.main.name
 }
 
 resource "azurerm_network_security_rule" "ssh" {
-  name      = "${resource_prefix}-SSH"
+  name      = "${var.resource_prefix}-SSH"
   priority  = 100
   direction = "Inbound"
   access    = "Allow"
@@ -74,7 +74,7 @@ resource "azurerm_network_security_rule" "ssh" {
 }
 
 resource "azurerm_network_security_rule" "http" {
-  name      = "${resource_prefix}-HTTP"
+  name      = "${var.resource_prefix}-HTTP"
   priority  = 110
   direction = "Inbound"
   access    = "Allow"
@@ -102,7 +102,7 @@ resource "azurerm_subnet_network_security_group_association" "default" {
 resource "azurerm_public_ip" "vm" {
   count = length(var.wordpress_instances)
 
-  name                = "${resource_prefix}-pip-traininig-${count.index}"
+  name                = "${var.resource_prefix}-pip-traininig-${count.index}"
   location            = data.azurerm_resource_group.main.location
   resource_group_name = data.azurerm_resource_group.main.name
   sku               = "Basic"
@@ -114,7 +114,7 @@ resource "azurerm_public_ip" "vm" {
 ######################
 
 resource "azurerm_private_dns_zone" "mysql" {
-  name                = "${resource_prefix}.private.mysql.database.azure.com"
+  name                = "${var.resource_prefix}.private.mysql.database.azure.com"
   resource_group_name = data.azurerm_resource_group.main.name
 }
 
