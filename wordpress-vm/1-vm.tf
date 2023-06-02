@@ -35,8 +35,8 @@ resource "azurerm_linux_virtual_machine" "vm" {
   location                        = data.azurerm_resource_group.main.location
   resource_group_name             = data.azurerm_resource_group.main.name
   size                            = "Standard_B2s"
-  admin_username                  = var.db_user
-  admin_password                  = var.db_pw
+  admin_username                  = var.vm_user
+  admin_password                  = var.vm_pw
   disable_password_authentication = false
   network_interface_ids = [
     azurerm_network_interface.vm[count.index].id, 
@@ -59,7 +59,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
       db_user = var.db_user
       db_pass = var.db_pw
       db_url  = var.db_url
-      db_name = "wordpress-${count.index}"
+      db_name = "wordpress${count.index}"
     })
     destination = "/tmp/setup.sh"
 

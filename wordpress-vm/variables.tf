@@ -42,3 +42,13 @@ variable "db_url" {
   type        = string
   description = "Url to the mysql database"
 }
+
+variable "vm_user" {
+  type = string
+  description = "Password for the DB"
+}
+
+variable "vm_pw" {
+  type = string
+  description = "Username for the DB"
+}
