@@ -40,7 +40,7 @@ No modules.
 | <a name="input_db_subnet_cidr"></a> [db\_subnet\_cidr](#input\_db\_subnet\_cidr) | CIDR of db subnet | `string` | n/a | yes |
 | <a name="input_default_subnet_cidr"></a> [default\_subnet\_cidr](#input\_default\_subnet\_cidr) | CIDR of default subnet | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Name of the resource group to use | `string` | n/a | yes |
-| <a name="input_resource_prefix"></a> [resource\_prefix](#input\_resource\_prefix) | Prefix for the azure resources | `string` | n/a | yes |
+| <a name="input_resource_prefix"></a> [resource\_prefix](#input\_resource\_prefix) | Prefix for the azure resources | `string` | `"dev"` | no |
 | <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | ID of subscription to deploy to | `string` | n/a | yes |
 | <a name="input_vnet_cidr"></a> [vnet\_cidr](#input\_vnet\_cidr) | CIDR of VNet | `string` | n/a | yes |
 | <a name="input_wordpress_instances"></a> [wordpress\_instances](#input\_wordpress\_instances) | List of Wordpress Instances | `list(string)` | <pre>[<br>  "i1"<br>]</pre> | no |

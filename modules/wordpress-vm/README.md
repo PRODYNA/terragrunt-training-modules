@@ -36,7 +36,7 @@ No modules.
 | <a name="input_instances"></a> [instances](#input\_instances) | List of Wordpress Instances | `list(string)` | <pre>[<br>  "i1"<br>]</pre> | no |
 | <a name="input_pip_ids"></a> [pip\_ids](#input\_pip\_ids) | IDs of public IPs | `list(string)` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Name of the resource group to use | `string` | n/a | yes |
-| <a name="input_resource_prefix"></a> [resource\_prefix](#input\_resource\_prefix) | Prefix for the azure resources | `string` | n/a | yes |
+| <a name="input_resource_prefix"></a> [resource\_prefix](#input\_resource\_prefix) | Prefix for the azure resources | `string` | `"dev"` | no |
 | <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | ID of subnet | `string` | n/a | yes |
 | <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | ID of subscription to deploy to | `string` | n/a | yes |
 | <a name="input_vm_pw"></a> [vm\_pw](#input\_vm\_pw) | Username for the DB | `string` | n/a | yes |
