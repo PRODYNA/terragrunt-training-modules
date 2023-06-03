@@ -43,7 +43,7 @@ No modules.
 | <a name="input_resource_prefix"></a> [resource\_prefix](#input\_resource\_prefix) | Prefix for the azure resources | `string` | n/a | yes |
 | <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | ID of subscription to deploy to | `string` | n/a | yes |
 | <a name="input_vnet_cidr"></a> [vnet\_cidr](#input\_vnet\_cidr) | CIDR of VNet | `string` | n/a | yes |
-| <a name="input_wordpress_instances"></a> [wordpress\_instances](#input\_wordpress\_instances) | List of Wordpress Instances | `list` | n/a | yes |
+| <a name="input_wordpress_instances"></a> [wordpress\_instances](#input\_wordpress\_instances) | List of Wordpress Instances | `list(string)` | <pre>[<br>  "i1"<br>]</pre> | no |
 
 ## Outputs
 

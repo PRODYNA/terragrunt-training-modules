@@ -33,7 +33,7 @@ No modules.
 | <a name="input_db_pw"></a> [db\_pw](#input\_db\_pw) | Username for the DB | `string` | n/a | yes |
 | <a name="input_db_url"></a> [db\_url](#input\_db\_url) | Url to the mysql database | `string` | n/a | yes |
 | <a name="input_db_user"></a> [db\_user](#input\_db\_user) | Password for the DB | `string` | n/a | yes |
-| <a name="input_instances"></a> [instances](#input\_instances) | List of Wordpress Instances | `list` | n/a | yes |
+| <a name="input_instances"></a> [instances](#input\_instances) | List of Wordpress Instances | `list(string)` | <pre>[<br>  "i1"<br>]</pre> | no |
 | <a name="input_pip_ids"></a> [pip\_ids](#input\_pip\_ids) | IDs of public IPs | `list(string)` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Name of the resource group to use | `string` | n/a | yes |
 | <a name="input_resource_prefix"></a> [resource\_prefix](#input\_resource\_prefix) | Prefix for the azure resources | `string` | n/a | yes |
