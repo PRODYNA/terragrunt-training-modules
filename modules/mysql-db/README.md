@@ -34,6 +34,7 @@ No modules.
 | <a name="input_db_subnet_id"></a> [db\_subnet\_id](#input\_db\_subnet\_id) | Id of the subnet where to deploy the DB | `string` | n/a | yes |
 | <a name="input_db_user"></a> [db\_user](#input\_db\_user) | Password for the DB | `string` | n/a | yes |
 | <a name="input_mysql_name"></a> [mysql\_name](#input\_mysql\_name) | Name of the MySQL | `string` | n/a | yes |
+| <a name="input_mysql_zone"></a> [mysql\_zone](#input\_mysql\_zone) | Zone where to deploy, can be 1,2 or 3 | `number` | `2` | no |
 | <a name="input_private_dns_zone_id"></a> [private\_dns\_zone\_id](#input\_private\_dns\_zone\_id) | Id of the private dns zone to use for the DB | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Name of the resource group to use | `string` | n/a | yes |
 | <a name="input_resource_prefix"></a> [resource\_prefix](#input\_resource\_prefix) | Prefix for the azure resources | `string` | `"dev"` | no |
