@@ -12,7 +12,7 @@ resource "azurerm_mysql_flexible_server" "mysql" {
   delegated_subnet_id    = var.db_subnet_id
   private_dns_zone_id    = var.private_dns_zone_id
   sku_name               = var.db_sku_name
-  zone                   = var.zone
+  zone                   = var.mysql_zone
 }
 
 resource "azurerm_mysql_flexible_server_configuration" "require_secure_transport" {
