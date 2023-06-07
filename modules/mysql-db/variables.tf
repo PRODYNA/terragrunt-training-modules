@@ -29,6 +29,7 @@ variable "mysql_name" {
   description = "Name of the MySQL"
 }
 
+# sometimes the zone is not available, just destroy the resource and change the zone
 variable "mysql_zone" {
   type        = number
   description = "Zone where to deploy, can be 1,2 or 3"
