@@ -1,7 +1,17 @@
 version: 2
 updates:
   - package-ecosystem: "terraform"
-    directory: "/"
+    directory: "/modules/base"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+  - package-ecosystem: "terraform"
+    directory: "/modules/mysql-db"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+  - package-ecosystem: "terraform"
+    directory: "/modules/wordpress-vm"
     schedule:
       interval: "weekly"
       day: "sunday"
