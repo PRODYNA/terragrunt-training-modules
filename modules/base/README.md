@@ -4,13 +4,13 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | >= 3 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | 3.111.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | >= 3 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.111.0 |
 
 ## Modules
 
@@ -20,18 +20,18 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [azurerm_application_security_group.web](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/application_security_group) | resource |
-| [azurerm_network_security_group.web](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_group) | resource |
-| [azurerm_network_security_rule.http](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_rule) | resource |
-| [azurerm_network_security_rule.ssh](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_rule) | resource |
-| [azurerm_private_dns_zone.mysql](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/private_dns_zone) | resource |
-| [azurerm_private_dns_zone_virtual_network_link.mysql](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/private_dns_zone_virtual_network_link) | resource |
-| [azurerm_public_ip.vm](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/public_ip) | resource |
-| [azurerm_subnet.db](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet) | resource |
-| [azurerm_subnet.default](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet) | resource |
-| [azurerm_subnet_network_security_group_association.default](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet_network_security_group_association) | resource |
-| [azurerm_virtual_network.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network) | resource |
-| [azurerm_resource_group.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group) | data source |
+| [azurerm_application_security_group.web](https://registry.terraform.io/providers/hashicorp/azurerm/3.111.0/docs/resources/application_security_group) | resource |
+| [azurerm_network_security_group.web](https://registry.terraform.io/providers/hashicorp/azurerm/3.111.0/docs/resources/network_security_group) | resource |
+| [azurerm_network_security_rule.http](https://registry.terraform.io/providers/hashicorp/azurerm/3.111.0/docs/resources/network_security_rule) | resource |
+| [azurerm_network_security_rule.ssh](https://registry.terraform.io/providers/hashicorp/azurerm/3.111.0/docs/resources/network_security_rule) | resource |
+| [azurerm_private_dns_zone.mysql](https://registry.terraform.io/providers/hashicorp/azurerm/3.111.0/docs/resources/private_dns_zone) | resource |
+| [azurerm_private_dns_zone_virtual_network_link.mysql](https://registry.terraform.io/providers/hashicorp/azurerm/3.111.0/docs/resources/private_dns_zone_virtual_network_link) | resource |
+| [azurerm_public_ip.vm](https://registry.terraform.io/providers/hashicorp/azurerm/3.111.0/docs/resources/public_ip) | resource |
+| [azurerm_subnet.db](https://registry.terraform.io/providers/hashicorp/azurerm/3.111.0/docs/resources/subnet) | resource |
+| [azurerm_subnet.default](https://registry.terraform.io/providers/hashicorp/azurerm/3.111.0/docs/resources/subnet) | resource |
+| [azurerm_subnet_network_security_group_association.default](https://registry.terraform.io/providers/hashicorp/azurerm/3.111.0/docs/resources/subnet_network_security_group_association) | resource |
+| [azurerm_virtual_network.main](https://registry.terraform.io/providers/hashicorp/azurerm/3.111.0/docs/resources/virtual_network) | resource |
+| [azurerm_resource_group.main](https://registry.terraform.io/providers/hashicorp/azurerm/3.111.0/docs/data-sources/resource_group) | data source |
 
 ## Inputs
 
